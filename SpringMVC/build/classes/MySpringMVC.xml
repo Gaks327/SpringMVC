@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	">   
+	
+	<!--1. 扫描注解所在的包 -->
+    <context:component-scan base-package="web"/>
+    
+	<!--2. 静态资源 访问放行 -->
+    <mvc:annotation-driven /> 
+    <mvc:default-servlet-handler />    
+    <mvc:resources mapping="/image/**" location="/image/"/>
+    <mvc:resources mapping="/js/**" location="/js/"/>
+
+    <!--3.视图解析器 -->
+    <!--前缀/页面名.后缀
+        http://localhost:8080/springmvc0502/success.jsp -->     
+    <bean id="MyView" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<property name="prefix" value="/WEB-INF/" />
+    	<property name="suffix" value=".jsp" />
+    </bean>    
+        
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
